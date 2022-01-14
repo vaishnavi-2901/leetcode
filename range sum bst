@@ -1,0 +1,11 @@
+class Solution {
+public:
+    int sum=0;
+    int rangeSumBST(TreeNode* root, int low, int high) {
+        if(root==nullptr) return sum;
+        if(root->val>=low and root->val<=high) sum+= root->val;
+        if(root->val>low) rangeSumBST(root->left,low,high);
+        if(root->val<high) rangeSumBST(root->right,low,high);
+        return sum;
+    }
+};
