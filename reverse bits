@@ -1,0 +1,11 @@
+// problem: Reverse bits of a given 32 bits unsigned integer.
+
+unsigned int Solution::reverse(unsigned int A) {
+    unsigned int res = 0, power = 31;
+    while(A!=0){
+        res+=(A&1)<<power; // accessing the last bit and doing left shift with the power(31) (ex: last bit is 1: 1*2^31 + 0*2^30) creating integer
+        power--; // reducing power as going to the right
+        A = A>>1; // iterating until A becomes 0
+    }
+    return res;
+}
