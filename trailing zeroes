@@ -1,0 +1,8 @@
+// problem: Given an integer A, count and return the number of trailing zeroes.
+class Solution:
+    def solve(self, A):
+        count=0
+        while(A&1==0): // A&1: (0 if A is even, else 1) in this way checking if A has right most it is zero of not
+            count=count+1 // if right most bit is 0, increase the count
+            A=A>>1 // using right shift, we are just iterating over bits, in from left to right
+        return count
