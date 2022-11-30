@@ -1,0 +1,22 @@
+class Solution {
+public:
+    int trap(vector<int>& arr) {
+        int n = arr.size();
+        // idea is to get the max water in the tank, hence we are taking left max and right max (defining boundaries)
+        vector<int> right(n);
+        vector<int> left(n);
+        left[0] = arr[0]; //since we can not store anything at 0th index, we are taking whatever height we have been given
+        right[n-1] = arr[n-1]; // same for right side boundary
+        for(int i=1;i<n;i++){
+            left[i] = max(left[i-1], arr[i]); //taking maximum of left and height array
+        }
+        for(int i=n-2;i>=0;i--){
+            right[i] = max(right[i+1], arr[i]); // defining right max in right array
+        }
+        int ans = 0;
+        for(int i=0;i<n;i++){
+            ans+= min(left[i],right[i])-arr[i]; // calculating the amount of water by taking min of left and right array and subtracting it with original height
+        }
+        return ans;
+    }
+};
