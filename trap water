@@ -20,3 +20,14 @@ public:
         return ans;
     }
 };
+
+/* intuition: 
+For each element in the array,
+we find the maximum level of water it can trap after the rain,
+which is equal to the minimum of maximum height of bars on both the sides minus its own height. 
+Algorithm:
+
+Find maximum height of bar from the left end upto an index i in the array left_max = left_max.
+Find maximum height of bar from the right end upto an index i in the array right_max = right_max;
+Iterate over the height height array and update ans:
+add ans = ans + min(left[i],right[i])-arr[i];
