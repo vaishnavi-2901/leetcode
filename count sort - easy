@@ -1,0 +1,51 @@
+#include<iostream>
+#include<vector>
+using namesapce std;
+//0,1,2 sorting
+int find_max(std::vector<int> v){
+	int ans = INT_MIN;
+	for(int i=0;i<v.size();i++){
+		if(ans>v[i]) ans = v[i];
+	}
+	return ans;
+}
+
+void count_sort(std::vector<int> v){
+	//find maximum of array
+	int maxx = find_max(v);
+	std::vector<int> cnt(maxx , 0); //vector with size n with 0 values
+
+	//fill the array
+
+	for(int i=0;i<v.size();i++){
+		cnt[v[i]]++;
+	}
+	v.clear();
+	//now traverse the cnt array and clear the v array
+	// [3,0,1,0] --> [0,1,2,3] cnt
+	for(int i=0;i<cnt.size();i++){
+		if(cnt[i]>0){
+			int val = cnt[i];
+			while(val--){
+				v.push_back(i);
+			}
+		}
+	}
+}
+
+int  main(){
+	std::vector<int> v;
+	int n;
+	cout<<"we will not take inputs if it's a negative value"<<endl;
+	while(n>0){
+		cin>>n;
+		v.push_back(n);
+	}
+	//sorting
+
+	//count sort
+	count_sort(v);
+	//print the final sorted array
+
+	for(int i : v) std::cout<<i<<" ";
+}
