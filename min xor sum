@@ -1,0 +1,18 @@
+class Solution {
+public:
+    int dp[14][16385];
+    int solve(vector<int>& a, vector<int>& b, int mask, int i){
+        int ans = INT_MAX;
+        if(i==a.size()) return 0;
+        if(dp[i][mask]>-1) return dp[i][mask];
+        for(int j=0;j<b.size();j++){
+            if(!(mask & 1<<j))
+                ans = min(ans, (a[i]^b[j])+solve(a,b,mask|(1<<j),i+1));
+        }
+        return dp[i][mask] = ans;
+    }
+    int minimumXORSum(vector<int>& nums1, vector<int>& nums2) {
+        memset(dp,-1,sizeof(dp));
+        return solve(nums1, nums2, 0, 0);
+    }
+};
