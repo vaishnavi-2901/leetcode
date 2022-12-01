@@ -1,0 +1,16 @@
+class Solution {
+public:
+    int minPairSum(vector<int>& nums) {
+        sort(nums.begin(),nums.end());
+        int currsum=0, maxsum=0;
+        int i=0,j=nums.size()-1;
+        while(i<=j){
+            currsum = nums[i]+nums[j];
+           // cout<<nums[i]<<nums[j]<<endl;
+            if(currsum>maxsum) maxsum = currsum;
+            i++;
+            j--;
+        }
+        return maxsum;
+    }
+};
