@@ -1,0 +1,25 @@
+#include<bits/stdc++.h>
+class Solution {
+public:
+    bool isvalid(string s){
+        int l = s.length();
+        map<char,int> m;
+        for(int i=0;i<l;i++) m[s[i]]++;
+        for(auto e : m){
+            if(e.second>1) return false;
+        }
+        return true;
+    }
+    int countGoodSubstrings(string s) {
+        int l =  s.size();
+        int count = 0;
+        for(int i=0;i<l-2;i++){
+            string t = "";
+            for(int j=0;j<3;j++){
+                t += s[i+j];
+            }
+            if(isvalid(t)) count++;
+        }
+        return count;
+    }
+};
