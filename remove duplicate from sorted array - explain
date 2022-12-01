@@ -32,3 +32,35 @@ return i+1 i.e. 1+1 = 2
 
 
 result array would be [1,2,2,2] trace to 2 length
+
+
+
+
+
+
+
+
+
+Solution:
+
+
+
+class Solution {
+public:
+    int removeDuplicates(vector<int>& nums) {
+        if(nums.size()<2){
+            return nums.size();
+        }
+        int i=0,j=1;
+        while(j!=nums.size()){
+            if(nums[i]!=nums[j]){
+                i++;
+                nums[i]=nums[j];
+            }
+            else{
+                j++;
+            }
+        }
+        return i+1;
+    }
+};
